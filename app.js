@@ -66922,7 +66922,7 @@ Ext.define('FrontEnd.view.main.GridIngredient', {extend:Ext.grid.Grid, xtype:'gr
 }}}, columns:[{text:'Name', dataIndex:'name', flex:1}, {text:'Unit', dataIndex:'measurementUnit', flex:1}, {text:'Id', dataIndex:'ingredientId', flex:1, hidden:true}, {text:'Calories', dataIndex:'calories', flex:1}, {text:'ImageName', dataIndex:'imagePath', flex:1, hidden:'true'}], platformConfig:{'!phone':{listeners:{childmouseenter:function(grid, location, eOpts) {
   var record = location.record;
   var target = location.cell;
-  var tooltip = Ext.create('Ext.tip.ToolTip', {target:target, html:'\x3cimg src\x3d"https://localhost:7270/api/ingredient/image/' + location.record.get('imagePath') + '" alt\x3d"' + location.record.get('name') + '" style\x3d"width: 50px; height: 50px;"/\x3e', trackMouse:true, width:80, height:80});
+  var tooltip = Ext.create('Ext.tip.ToolTip', {target:target, html:'\x3cimg src\x3d"https://recipeasstorage.blob.core.windows.net/recipeas/' + location.record.get('imagePath') + '" alt\x3d"' + location.record.get('name') + '" style\x3d"width: 50px; height: 50px;"/\x3e', trackMouse:true, width:80, height:80});
   grid.Tooltip = tooltip;
   tooltip.show();
 }, childmouseleave:function(grid, location, eOpts) {
@@ -66936,7 +66936,7 @@ Ext.define('FrontEnd.view.main.HomeRecipeDataview', {extend:Ext.panel.Panel, xty
 '\x3cdiv class\x3d"name ingredient-name-style" style\x3d" margin-top: 5px;"\x3e{name}\x3c/div\x3e', '\x3c/div\x3e', {getImageUrl:function(values) {
   var imageName = values.imagePath;
   console.log('Downloaded img:' + imageName);
-  return 'https://localhost:7270/api/ingredient/image/' + imageName;
+  return 'https://recipeasstorage.blob.core.windows.net/recipeas/' + imageName;
 }}), store:{type:'ingredient'}, plugins:{width:415, minWidth:300, type:'dataviewtip', delegate:'.img', allowOver:true, align:'t-b?', anchor:true, bind:'{record}', tpl:'\x3ctable style\x3d"border-spacing:3px; border-collapse:separate"\x3e' + '\x3ctr\x3e\x3ctd\x3eDescription: \x3c/td\x3e\x3ctd\x3e{affiliation}\x3c/td\x3e\x3c/tr\x3e'}}]});
 Ext.define('FrontEnd.view.main.ManagementGrids', {extend:Ext.tab.Panel, xtype:'managementgrids', shadow:true, cls:'demo-solid-background', tabBar:{layout:{pack:'center'}}, activeTab:1, defaults:{scrollable:true}, items:[{title:'Tab 1', html:'By default, tabs are aligned to the top of a view.', cls:'card'}, {title:'Tab 2', html:'A TabPanel can use different animations by setting \x3ccode\x3elayout.animation.\x3c/code\x3e', cls:'card'}, {title:'Tab 3', html:'\x3cspan class\x3d"action"\x3eUser tapped Tab 3\x3c/span\x3e', 
 cls:'card'}]});
